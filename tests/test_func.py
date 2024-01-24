@@ -11,7 +11,8 @@ from src import func
 
 
 def test_read_file(ipath, expected):
-    assert func.read_file.os.path.isfile(ipath) == expected
+    result = func.read_file(ipath)  # Чтение файла через функцию
+    assert (result is not None) == expected
 
 
 '''
