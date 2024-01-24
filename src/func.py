@@ -3,7 +3,7 @@ from datetime import datetime
 
 #def read_file(ipath='/home/rust/PycharmProjects/coursework3/text.txt'):
 def read_file(ipath='/home/rust/PycharmProjects/coursework3/operations.json'):
-    """Функция возвращает данные из файла operations.json"""
+    """Функция возвращает данные из файла *.json"""
     try:
         with open(ipath, 'r', encoding='utf-8') as file:
             file_content = file.read()
@@ -12,11 +12,12 @@ def read_file(ipath='/home/rust/PycharmProjects/coursework3/operations.json'):
             print(f"Ошибка при открытии файла: {e}")
             return None
     except ValueError as e:
-            print(f"Error while parsing JSON: {e}")
+            print(f"Ошибка при парсинге файла в формат JSON, расположенного по адресу:\n"
+                  f"{ipath}: {e}")
             return None
 
 
-#read_file()
+read_file()
 
 
 def sort_on_time():
