@@ -1,8 +1,8 @@
 import json
 from datetime import datetime
 
-#def read_file(ipath='/home/rust/PycharmProjects/coursework3/operations.json'):
-def read_file(ipath='/home/rust/PycharmProjects/coursework3/text.txt'):
+#def read_file(ipath='/home/rust/PycharmProjects/coursework3/text.txt'):
+def read_file(ipath='/home/rust/PycharmProjects/coursework3/operations.json'):
     """Функция возвращает данные из файла operations.json"""
     try:
         with open(ipath, 'r', encoding='utf-8') as file:
@@ -16,7 +16,7 @@ def read_file(ipath='/home/rust/PycharmProjects/coursework3/text.txt'):
             return None
 
 
-read_file()
+#read_file()
 
 
 def sort_on_time():
