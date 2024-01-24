@@ -17,12 +17,11 @@ def read_file(ipath='/home/rust/PycharmProjects/coursework3/operations.json'):
             return None
 
 
-def sort_on_time():
+def sort_on_time(json_data_sort=read_file()):
     """
         Сортировка по ключу 'date'
         Если ключ "date" отсутствует, используется значение по умолчанию "1970-01-01T00:00:00.000".
     """
-    json_data_sort = read_file()
     if json_data_sort == None:
         return None
     json_data_sort.sort(key=lambda x: datetime.strptime(x.get("date", "1970-01-01T00:00:00.000"),
@@ -30,7 +29,7 @@ def sort_on_time():
     return json_data_sort
 
 
-def first_executed_operations(up_bounder=10):
+def first_executed_operations(up_bounder=5):
     """Функция выводит указанное число первых значений из отсортированного по убыванию списка
        по ключу "state" =+ "EXECUTED"
     """
