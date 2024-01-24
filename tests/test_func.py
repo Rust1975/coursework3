@@ -1,19 +1,20 @@
 import pytest
+import os
 from src import func
 
-'''
-@pytest.mark.parametrize("input, expected", [
-    (5, 25),
-    (7, 49),
-    (8, 64),
+
+@pytest.mark.parametrize("ipath, expected", [
+    ('/home/rust/PycharmProjects/coursework3/operations.json', True),
+    ('/home/rust/PycharmProjects/coursework3/text.txt', False),
+    ('/home/rust/PycharmProjects/coursework3/operations111.json', False)
 ])
+
+
+def test_read_file(ipath, expected):
+    assert func.read_file.os.path.isfile(ipath) == expected
+
+
 '''
 def test read_file(input, expected):
     assert input * input == expected
-
-def test_read_file():
-    try:
-        with open('/home/rust/PycharmProjects/coursework3/operations.json', 'r', encoding='utf-8') as file:
-            file_content = file.read()
-    except IOError as e:
-        pytest.fail(f"Ошибка при открытии файла: {e}")
+'''
