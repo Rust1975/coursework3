@@ -9,11 +9,29 @@ def output_to_screen():
     """Функция выводит последние пять успешно выполненных операций из списка операций
     """
     idate = extraction_date()
+    if idate == None:
+        return None
+    
     idescription = description()
+    if idescription == None:
+        return None
+
     iresult_from = result_from()
+    if iresult_from == None:
+        return None
+
     iresult_to = result_to()
+    if iresult_to == None:
+        return None
+
     iamount = amount()
+    if iamount == None:
+        return None
+
     icurrency = currency()
+    if icurrency == None:
+        return None
+
     for i in range(0, len(idate)):
         print(f"{idate[i]} {idescription[i]}")
         if iresult_from[i] == "":
