@@ -17,9 +17,6 @@ def read_file(ipath='/home/rust/PycharmProjects/coursework3/operations.json'):
             return None
 
 
-read_file()
-
-
 def sort_on_time():
     """
         Сортировка по ключу 'date'
@@ -151,6 +148,7 @@ def currency():
 
 
 '''
+read_file()
 [print(item) for item in first_executed_operations(5)]
 [print(item) for item in result_from()]
 [print(item) for item in result_to()]
