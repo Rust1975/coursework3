@@ -4,9 +4,9 @@ from src import func
 
 
 @pytest.mark.parametrize("ipath, expected", [
-    ('/home/rust/PycharmProjects/coursework3/operations.json', True),
-    ('/home/rust/PycharmProjects/coursework3/text.txt', False),
-    ('/home/rust/PycharmProjects/coursework3/operations111.json', False)
+    ("C:/Users/homepc/PycharmProjects/coursework3/operations.json", True),
+    ("C:/Users/homepc/PycharmProjects/coursework3/text.txt", False),
+    ("C:/Users/homepc/PycharmProjects/coursework3/operations111.json", False)
 ])
 
 
