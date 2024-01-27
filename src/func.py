@@ -1,8 +1,10 @@
 import json
 from datetime import datetime
 
-def read_file(ipath="C:/Users/homepc/PycharmProjects/coursework3/operations.json"):
+def read_file(ipath=None):
     """Функция возвращает данные из файла *.json"""
+    if ipath is None:
+        ipath = "C:/Users/homepc/PycharmProjects/coursework3/operations.json"
     try:
         with open(ipath, 'r', encoding='utf-8') as file:
             file_content = file.read()
@@ -16,24 +18,29 @@ def read_file(ipath="C:/Users/homepc/PycharmProjects/coursework3/operations.json
             return None
 
 
-def sort_on_time(json_data_sort=read_file()):
+def sort_on_time(ipath=None):
     """
         Сортировка по ключу 'date'
         Если ключ "date" отсутствует, используется значение по умолчанию "1970-01-01T00:00:00.000".
     """
-    if json_data_sort == None:
+    json_data_sort = read_file(ipath)
+    if json_data_sort is None:
         return None
     json_data_sort.sort(key=lambda x: datetime.strptime(x.get("date", "1970-01-01T00:00:00.000"),
                                                    "%Y-%m-%dT%H:%M:%S.%f"), reverse=True)
     return json_data_sort
 
+#print(len(sort_on_time()))
 
-def first_executed_operations(up_bounder=5):
+def first_executed_operations(ipath=None, operations=None, up_bounder=None):
     """Функция выводит указанное число первых значений из отсортированного по убыванию списка
        по ключу "state" =+ "EXECUTED"
     """
-    operations = sort_on_time()
-    if operations == None:
+    if operations is None:
+        operations = sort_on_time(ipath)
+    if operations is None:
+        return None
+    if up_bounder is None:
         return None
     result_list = []
     for x in operations:
@@ -44,6 +51,11 @@ def first_executed_operations(up_bounder=5):
                 break
     return result_list
 
+#tt = json.load(open("C:/Users/homepc/PycharmProjects/coursework3/tst.json"))
+#dd = "C:/Users/homepc/PycharmProjects/coursework3/tst.json"
+#print(tt)
+#[print(item) for item in first_executed_operations(dd,None,3)]
+#print(first_executed_operations(dd,None,3))
 
 def extraction_date():
     """
