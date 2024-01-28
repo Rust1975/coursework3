@@ -51,18 +51,14 @@ def first_executed_operations(ipath=None, operations=None, up_bounder=None):
                 break
     return result_list
 
-#tt = json.load(open("C:/Users/homepc/PycharmProjects/coursework3/tst.json"))
-#dd = "C:/Users/homepc/PycharmProjects/coursework3/tst.json"
-#print(tt)
-#[print(item) for item in first_executed_operations(dd,None,3)]
-#print(first_executed_operations(dd,None,3))
 
-def extraction_date():
+def extraction_date(operations=None):
     """
         Функция возвращает даты из списка словарей по ключу "date"
     """
-    operations = first_executed_operations(5)
-    if operations == None:
+    if operations is None:
+        operations = first_executed_operations(None,None,5)
+    if operations is None:
         return None
     idate = []
     for x in operations:
@@ -71,28 +67,30 @@ def extraction_date():
         idate.append(datetime.fromisoformat(x["date"]).strftime("%d.%m.%Y"))
     return idate
 
-
-def description():
+def description(operations=None):
     """
         Функция возвращает "описание операции" из списка словарей по ключу "description"
     """
-    operations = first_executed_operations(5)
-    if operations == None:
+    if operations is None:
+        operations = first_executed_operations(None, None, 5)
+    if operations is None:
         return None
     idescription = []
     for x in operations:
         idescription.append(x["description"])
     return idescription
 
-def result_from():
+
+def result_from(operations=None):
     """
         Функция возвращает откуда переводится, из списка словарей по ключу "from".
         Номер карты замаскирован и не отображается целиком в формате
         XXXX XX** **** XXXX (видны первые 6 цифр и последние 4, разбито
         по блокам по 4 цифры, разделенных пробелом).
     """
-    operations = first_executed_operations(5)
-    if operations == None:
+    if operations is None:
+        operations = first_executed_operations(None, None, 5)
+    if operations is None:
         return None
     iresult_from = []
     for x in operations:
@@ -108,14 +106,16 @@ def result_from():
             iresult_from.append(str0)
     return iresult_from
 
-def result_to():
+
+def result_to(operations=None):
     """
         Функция возвращает куда переводится, из списка словарей по ключу "to"
         Номер счета замаскирован и не отображается целиком в формате  **XXXX
         (видны только последние 4 цифры номера счета).
     """
-    operations = first_executed_operations(5)
-    if operations == None:
+    if operations is None:
+        operations = first_executed_operations(None, None, 5)
+    if operations is None:
         return None
     iresult_to = []
     for x in operations:
@@ -131,11 +131,12 @@ def result_to():
     return iresult_to
 
 
-def amount():
+def amount(operations=None):
     """
         Функция возвращает сумму первода из списка словарей по ключам "operationAmount" и "amount"
     """
-    operations = first_executed_operations(5)
+    if operations is None:
+        operations = first_executed_operations(None, None, 5)
     if operations == None:
         return None
     iamount = []
@@ -144,11 +145,12 @@ def amount():
     return iamount
 
 
-def currency():
+def currency(operations=None):
     """
         Функция возвращает валюту перевода из списка словарей по ключам "operationAmount", "currency" и "name"
     """
-    operations = first_executed_operations(5)
+    if operations is None:
+        operations = first_executed_operations(None, None, 5)
     if operations == None:
         return None
     icurrency = []
@@ -156,6 +158,15 @@ def currency():
         icurrency.append(x["operationAmount"]["currency"]["name"])
     return icurrency
 
+#tt = json.load(open("C:/Users/homepc/PycharmProjects/coursework3/tst.json"))
+dd = "C:/Users/homepc/PycharmProjects/coursework3/tst.json"
+gg = "C:/Users/homepc/PycharmProjects/coursework3/operations.json"
+#print(tt)
+#[print(item) for item in first_executed_operations(dd,None,3)]
+#print(description())
+#print(first_executed_operations(None, None, 1))
+print(currency(first_executed_operations(None, None, 2)))
+print(currency())
 
 '''
 read_file()
