@@ -4,7 +4,8 @@
 # from src import main
 #
 # def test_output_to_screen():
-#     assert main.output_to_screen(idate=None, idescription=None, iresult_from=None, iresult_to=None, iamount=None, icurrency=None) == """
+#     assert main.output_to_screen(idate=None, idescription=None, iresult_from=None,
+#                                  iresult_to=None, iamount=None, icurrency=None) == """
 #     08.12.2019 Открытие вклада
 #     Счет **5907
 #     41096.24 USD

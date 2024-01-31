@@ -5,6 +5,7 @@ from func import result_to
 from func import amount
 from func import currency
 
+
 def output_to_screen(idate=None, idescription=None, iresult_from=None,
                      iresult_to=None, iamount=None, icurrency=None):
     """Функция выводит последние пять успешно выполненных операций из списка операций
