@@ -1,10 +1,12 @@
 import json
+import os
 from datetime import datetime
 
 def read_file(ipath=None):
     """Функция возвращает данные из файла *.json"""
     if ipath is None:
-        ipath = "C:/Users/homepc/PycharmProjects/coursework3/operations.json"
+        ipath_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        ipath = os.path.abspath(os.path.join(ipath_dir, "operations.json"))
     try:
         with open(ipath, 'r', encoding='utf-8') as file:
             file_content = file.read()
@@ -16,7 +18,6 @@ def read_file(ipath=None):
             print(f"Ошибка при парсинге файла в формат JSON, расположенного по адресу:\n"
                   f"{ipath}: {e}")
             return None
-
 
 def sort_on_time(ipath=None):
     """
@@ -30,7 +31,6 @@ def sort_on_time(ipath=None):
                                                    "%Y-%m-%dT%H:%M:%S.%f"), reverse=True)
     return json_data_sort
 
-#print(len(sort_on_time()))
 
 def first_executed_operations(ipath=None, operations=None, up_bounder=None):
     """Функция выводит указанное число первых значений из отсортированного по убыванию списка
@@ -157,16 +157,6 @@ def currency(operations=None):
     for x in operations:
         icurrency.append(x["operationAmount"]["currency"]["name"])
     return icurrency
-
-#tt = json.load(open("C:/Users/homepc/PycharmProjects/coursework3/tst.json"))
-dd = "C:/Users/homepc/PycharmProjects/coursework3/tst.json"
-gg = "C:/Users/homepc/PycharmProjects/coursework3/operations.json"
-#print(tt)
-#[print(item) for item in first_executed_operations(dd,None,3)]
-#print(description())
-#print(first_executed_operations(None, None, 1))
-print(currency(first_executed_operations(None, None, 2)))
-print(currency())
 
 '''
 read_file()
