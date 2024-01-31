@@ -1,12 +1,16 @@
 import pytest
+import os
 #from datetime import datetime
 from src import func
 
-
+ipath_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 @pytest.mark.parametrize("ipath, expected", [
-    ("C:/Users/homepc/PycharmProjects/coursework3/operations.json", True),
-    ("C:/Users/homepc/PycharmProjects/coursework3/text.txt", False),
-    ("C:/Users/homepc/PycharmProjects/coursework3/operations111.json", False)
+    # ("C:/Users/homepc/PycharmProjects/coursework3/operations.json", True),
+    # ("C:/Users/homepc/PycharmProjects/coursework3/text.txt", False),
+    # ("C:/Users/homepc/PycharmProjects/coursework3/operations111.json", False)
+    (os.path.abspath(os.path.join(ipath_dir, "operations.json")), True),
+    (os.path.abspath(os.path.join(ipath_dir, "text.txt")), False),
+    (os.path.abspath(os.path.join(ipath_dir, "operations111.json")), False)
 ])
 
 def test_read_file(ipath, expected):
