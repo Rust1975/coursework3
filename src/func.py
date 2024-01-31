@@ -2,6 +2,7 @@ import json
 import os
 from datetime import datetime
 
+
 def read_file(ipath=None):
     """Функция возвращает данные из файла *.json"""
     if ipath is None:
@@ -12,12 +13,13 @@ def read_file(ipath=None):
             file_content = file.read()
         return json.loads(file_content)
     except IOError as e:
-            print(f"Ошибка при открытии файла: {e}")
-            return None
+        print(f"Ошибка при открытии файла: {e}")
+        return None
     except ValueError as e:
-            print(f"Ошибка при парсинге файла в формат JSON, расположенного по адресу:\n"
-                  f"{ipath}: {e}")
-            return None
+        print(f"Ошибка при парсинге файла в формат JSON, расположенного по адресу:\n"
+              f"{ipath}: {e}")
+        return None
+
 
 def sort_on_time(ipath=None):
     """
@@ -28,7 +30,7 @@ def sort_on_time(ipath=None):
     if json_data_sort is None:
         return None
     json_data_sort.sort(key=lambda x: datetime.strptime(x.get("date", "1970-01-01T00:00:00.000"),
-                                                   "%Y-%m-%dT%H:%M:%S.%f"), reverse=True)
+                                                        "%Y-%m-%dT%H:%M:%S.%f"), reverse=True)
     return json_data_sort
 
 
@@ -57,15 +59,16 @@ def extraction_date(operations=None):
         Функция возвращает даты из списка словарей по ключу "date"
     """
     if operations is None:
-        operations = first_executed_operations(None,None,5)
+        operations = first_executed_operations(None, None, 5)
     if operations is None:
         return None
     idate = []
     for x in operations:
-        #применяем метод .strftime к экземпляру класса datetime.fromisoformat(x["date"])
-        #и результат добавляем в список idate
+        # Применяем метод .strftime к экземпляру класса datetime.fromisoformat(x["date"])
+        # и результат добавляем в список idate
         idate.append(datetime.fromisoformat(x["date"]).strftime("%d.%m.%Y"))
     return idate
+
 
 def description(operations=None):
     """
@@ -98,8 +101,8 @@ def result_from(operations=None):
         if str0 == "":
             iresult_from.append(str0)
         else:
-            str1 = str0.split()[-1] #цифровая часть строки - хвост
-            str2 = str0.replace(str1, "").strip() #текстовая часть строки - голова
+            str1 = str0.split()[-1]  # Цифровая часть строки - хвост
+            str2 = str0.replace(str1, "").strip()  # Текстовая часть строки - голова
             str3 = str1[:6] + "******" + str1[12:]
             str4 = " ".join(str3[i:i + 4] for i in range(0, len(str3), 4))
             str0 = str2 + " " + str4
@@ -137,7 +140,7 @@ def amount(operations=None):
     """
     if operations is None:
         operations = first_executed_operations(None, None, 5)
-    if operations == None:
+    if operations is None:
         return None
     iamount = []
     for x in operations:
@@ -151,12 +154,13 @@ def currency(operations=None):
     """
     if operations is None:
         operations = first_executed_operations(None, None, 5)
-    if operations == None:
+    if operations is None:
         return None
     icurrency = []
     for x in operations:
         icurrency.append(x["operationAmount"]["currency"]["name"])
     return icurrency
+
 
 '''
 read_file()
