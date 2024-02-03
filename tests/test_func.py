@@ -1,5 +1,7 @@
-import pytest
 import os
+
+import pytest
+
 from src import func
 
 ipath_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))

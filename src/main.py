@@ -1,9 +1,9 @@
-from func import extraction_date
-from func import description
-from func import result_from
-from func import result_to
 from func import amount
 from func import currency
+from func import description
+from func import extraction_date
+from func import result_from
+from func import result_to
 
 
 def output_to_screen(idate=None, idescription=None, iresult_from=None,
